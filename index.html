@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiant Motive Navigator</title>
+</head>
+<body style="background-color: #0f172a; color: #f8fafc; font-family: sans-serif; padding: 20px; margin: 0;">
+
+    <!-- HEADER AREA -->
+    <div style="background-color: #020617; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #1e293b;">
+        <span style="color: #10b981; font-weight: bold; font-size: 16px;">🟢 RADIANT MOTIVE NAVIGATOR v2.0</span>
+        <div style="color: #64748b; font-size: 11px; margin-top: 4px;">Medicaid Pivot Strategy Block</div>
+    </div>
+
+    <!-- MAIN APP SCREEN INTERFACE -->
+    <div style="background-color: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; margin-bottom: 30px;">
+        <div id="step-badge" style="color: #2dd4bf; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Step 1 of 4 • Objective Discovery</div>
+        
+        <h1 id="app-title" style="font-size: 24px; color: #ffffff; margin-top: 10px; margin-bottom: 10px;">Let's make navigating your benefits easier.</h1>
+        <p id="app-subtitle" style="color: #cbd5e1; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">Maryland is preparing structural changes to certain Medicaid eligibility and renewal requirements beginning in 2027.</p>
+        
+        <div id="app-explanation" style="background-color: #020617; padding: 12px; border-radius: 6px; font-size: 13px; color: #94a3b8; margin-bottom: 20px; border: 1px solid #1e293b;">
+            Select your core objective today to initiate a personalized guidance track. We do not make eligibility decisions or ask for personal documentation.
+        </div>
+
+        <!-- THE INTERACTIVE OPTION BUTTONS CONTAINER -->
+        <div id="buttons-container"></div>
+
+        <!-- CONTEXTUAL ASSISTANCE DRAWER -->
+        <div style="margin-top: 20px; border-top: 1px solid #334155; padding-top: 15px;">
+            <button onclick="toggleHelp()" style="background: none; border: none; color: #2dd4bf; text-decoration: underline; font-size: 13px; cursor: pointer; padding: 0;">💡 Why am I being asked this?</button>
+            <div id="help-drawer" style="display: none; background-color: #020617; padding: 12px; border-radius: 6px; font-size: 12px; color: #94a3b8; margin-top: 10px; border-left: 3px solid #2dd4bf;"></div>
+        </div>
+    </div>
+
+    <!-- INVESTOR TELEMETRY PANEL LAYER -->
+    <div style="background-color: #020617; padding: 15px; border-radius: 8px; border: 1px solid #1e293b;">
+        <div style="font-size: 12px; color: #94a3b8; font-weight: bold; text-transform: uppercase;">Live Technology Telemetry Log</div>
+        <div style="font-size: 11px; color: #64748b; margin-top: 4px; margin-bottom: 10px;">Decoupled operational JSON tracer engine for investor validation.</div>
+        
+        <div style="font-size: 12px; font-family: monospace; margin-bottom: 6px;">
+            Active Logic Node: <span id="telemetry-node" style="color: #f59e0b;">WELCOME_SCREEN</span>
+        </div>
+        <pre id="telemetry-json" style="background-color: #0f172a; padding: 10px; border-radius: 4px; border: 1px solid #1e293b; color: #2dd4bf; font-family: monospace; font-size: 11px; margin: 0; overflow-x: auto;"></pre>
+    </div>
+
+    <!-- SCRIPT APPLICATION LOGIC ENGINE -->
+    <script>
+        const navigationEngine = {
+            "WELCOME_SCREEN": {
+                "step": "1 of 4", "name": "Objective Discovery",
+                "title": "Let's make navigating your benefits easier.",
+                "subtitle": "Maryland is preparing structural changes to certain Medicaid eligibility and renewal requirements beginning in 2027.",
+                "explanation": "Select your core objective today to initiate a personalized guidance track. We do not make eligibility decisions or ask for personal documentation.",
+                "help": "Different objectives require structurally distinct guidance tracks. Selecting a precise option prevents unnecessary questions and isolates the exact state rules that apply to your situation.",
+                "options": [
+                    { "text": "Understanding a Medicaid notice I received", "next": "UNDERSTAND_NOTICE" },
+                    { "text": "I am not sure whether the new requirements apply to me", "next": "SCREEN_APPLICABILITY" },
+                    { "text": "Preparing for an upcoming eligibility renewal", "next": "PREPARE_RENEWAL" },
+                    { "text": "I think I may be exempt from the new work rules", "next": "EXPLORE_EXEMPTIONS" }
+                ]
+            },
+            "UNDERSTAND_NOTICE": {
+                "step": "2 of 4", "name": "Notice Diagnostics",
+                "title": "Let's interpret your state notice.",
+                "subtitle": "Your physical or digital notice is the legal starting point for understanding what the state expects you to verify.",
+                "explanation": "Look at the top right header of your paper document or state portal notification. What notification action layout matches your document?",
+                "help": "If your notice is lost, select 'unable to interpret'. We will route you to a community college or clinic navigator support path to safely locate your account records.",
+                "options": [
+                    { "text": "It says 'Action Required' with an explicit renewal date", "next": "PREPARE_RENEWAL" },
+                    { "text": "It mentions new work, volunteering, or training rules", "next": "EXPLORE_EXEMPTIONS" },
+                    { "text": "I am unable to interpret the text or layout of the notice", "next": "CONNECT_ASSISTANCE" }
+                ]
+            },
+            "SCREEN_APPLICABILITY": {
+                "step": "2 of 4", "name": "Applicability Screening",
+                "title": "Let's figure out if these updates apply to you.",
+                "subtitle": "Not everyone enrolled in Maryland Medicaid or Colorado Health First is subject to the newly updated bi-annual rules.",
+                "explanation": "First, let's establish where you currently stand in the state pipeline. Have you received a specific notification regarding your compliance cycle?",
+                "help": "State matrices exclude certain age brackets and specific care demographics. This check paths you directly to your correct bracket safety level.",
+                "options": [
+                    { "text": "Yes, I received a notice and need to check what it means", "next": "UNDERSTAND_NOTICE" },
+                    { "text": "No, I have not received a notice yet", "next": "VERIFY_TIMELINES" }
+                ]
+            },
+            "EXPLORE_EXEMPTIONS": {
+                "step": "3 of 4", "name": "Exemption Verification",
+                "title": "Understanding your work & training exemptions.",
+                "subtitle": "The 2027 rules mandate 80 hours per month of approved activities unless you meet clear state exemption categories.",
+                "explanation": "Exemption criteria are legally absolute. Do any of the following standard criteria apply to your current household structure?",
+                "help": "Approved activities include employment, vocational school tracks, or certified family care. If you qualify for an exemption, we structure your documentation logs.",
+                "options": [
+                    { "text": "Enrolled at least half-time in a community college or training track", "next": "CONNECT_ASSISTANCE" },
+                    { "text": "None of these apply, I need to log active engagement hours", "next": "PREPARE_RENEWAL" }
+                ]
+            },
+            "PREPARE_RENEWAL": {
+                "step": "3 of 4", "name": "Documentation Alignment",
+                "title": "Let's align your verification documents.",
+                "subtitle": "Incomplete submission metrics are the primary cause of sudden, catastrophic insurance drops.",
+                "explanation": "Before accessing official state file upload fields, ensure you have organized these necessary verification assets: recent income stubs, approved educational training enrollment logs, or official medical exemption certificates.",
+                "help": "Submitting missing elements results in auto-rejections. If files are missing, we connect you to local groups to extend your filing time windows safely.",
+                "options": [
+                    { "text": "My documentation package is organized and verified complete", "next": "FINAL_CONFIRMATION" },
+                    { "text": "I am missing key validation papers and need direct support", "next": "CONNECT_ASSISTANCE" }
+                ]
+            },
+            "VERIFY_TIMELINES": {
+                "step": "2 of 4", "name": "Proactive Timeline Scanning",
+                "title": "You are currently clear of active deadlines.",
+                "subtitle": "If you have not received an alert, your account may currently reside in a standard passive tracking tier.",
+                "explanation": "Because rules roll out in targeted demographic waves throughout 2027, you should establish a bi-monthly checkpoint loop to ensure your information stays updated before a renewal notice is generated.",
+                "help": "Waves launch dynamically. Keeping clean baseline checkpoints protects you from missing automated administrative shifts down the line.",
+                "options": [
+                    { "text": "Restart Demo Engine & Check Alternative Paths", "next": "WELCOME_SCREEN" }
+                ]
+            },
+            "CONNECT_ASSISTANCE": {
+                "step": "4 of 4", "name": "Human Navigator Synchronization",
+                "title": "Let's connect you directly with a local navigator.",
